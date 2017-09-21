@@ -1,6 +1,8 @@
 import core from '../core'
+import ready from './ready'
 
 export default {
+    core,
     speed: 4,
 
     // 游戏状态
@@ -9,13 +11,13 @@ export default {
     init() {
 
         this.audios = {
-            jump: new Howl({
-                src: 'res/audio/jump.mp3'
-            }),
-
-            eat: new Howl({
-                src: 'res/audio/eat.mp3'
-            })
+            jump: new Howl({src: 'res/audio/jump.mp3'}),
+            eat: new Howl({src: 'res/audio/eat.mp3'}),
+            one: new Howl({src: 'res/audio/1.ogg'}),
+            two: new Howl({src: 'res/audio/2.ogg'}),
+            three: new Howl({src: 'res/audio/3.ogg'}),
+            ready: new Howl({src: 'res/audio/ready.ogg'}),
+            go: new Howl({src: 'res/audio/go.ogg'})
         }
 
 
@@ -26,13 +28,14 @@ export default {
             // 添加游戏内容
 
             this.addBkg()
+            this.addGround()
             this.addPlane()
-            this.addTap()
-
             this.listen()
 
-            core.ticker.add(this.loop.bind(this))
+            this.ready = ready.init(this)
+            this.ready.play()
 
+            core.ticker.add(this.loop.bind(this))
         })
     },
 
@@ -54,6 +57,30 @@ export default {
             this.bkgs.push(bkg)
 
             core.stage.addChild(bkg)
+        }
+    },
+
+    addGround() {
+        this.grounds = []
+        this.lastGround = null
+
+        for (let i = 0; i < 3; i++) {
+            const ground = new PIXI.Sprite(this.textures['groundSnow.png'])
+            ground.anchor.set(.5)
+            ground.position.set(ground.width * (i + .5),
+                window.design.height - ground.height * .5)
+
+            PIXI.extras.physics.enable(ground)
+                .clearShapes()
+                .loadPolygon(this.shapes.groundRock.fixtures[0].polygons)
+                .setKinematic()
+                .setLinearVelocity(planck.Vec2(-this.speed, 0))
+
+            this.lastGround = ground
+
+            this.grounds.push(ground)
+
+            core.stage.addChild(ground)
         }
     },
 
@@ -87,20 +114,6 @@ export default {
             .setFixedRotation(false)
 
         core.stage.addChild(this.plane)
-    },
-
-    addTap() {
-        this.tapTicker = new PIXI.extras.AnimatedSprite([
-            this.textures['tap.png'],
-            this.textures['tapTick.png']
-        ])
-
-        this.tapTicker.animationSpeed = 1.8
-        this.tapTicker.play()
-        this.tapTicker.anchor.set(.5)
-        this.tapTicker.position.set(window.design.width >> 1, window.design.height >> 1)
-
-        core.stage.addChild(this.tapTicker)
     },
 
     load() {
@@ -148,6 +161,17 @@ export default {
 
     loop() {
         // if (this.state !== 'run') return
+
+        this.grounds.forEach(ground => {
+            if (ground.x < -ground.width >> 1) {
+                const lastPosition = this.lastGround.body.getPosition()
+                ground.body.setPosition(planck.Vec2(
+                    lastPosition.x + ground.width / PIXI.extras.physics.PTM,
+                    lastPosition.y
+                ))
+                this.lastGround = ground
+            }
+        })
 
         // 背景移动
         this.bkgs.forEach((bkg, i) => {
