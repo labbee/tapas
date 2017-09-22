@@ -2,13 +2,15 @@ import './plugin'
 
 const
     ratio = 2,
-    width = 568 * ratio,
+    width = 667 * ratio,
     height = 375 * ratio
 
 const app = new PIXI.Application({
     width,
     height
 })
+
+window.design = {width, height, ratio}
 
 function resize() {
 
@@ -21,12 +23,12 @@ function resize() {
 
     if (screen.w / screen.h >= 1) {
         // 宽屏
-        window.angle = 0
+        window.design.angle = 0
         ratio.w = screen.w / width
         ratio.h = screen.h / height
     } else {
         // 窄屏 (canvas 旋转 90° w <=> h)
-        window.angle = 90
+        window.design.angle = 90
         ratio.w = screen.w / height,
         ratio.h = screen.h / width
     }
@@ -58,10 +60,3 @@ export default {
     stage: app.stage
 }
 
-/*
-* 导出尺寸信息
-* 方便物理引擎调用
-* 由于 planck 与 pixi 坐标系不同
-* 同步位置时需要转换
-*/
-window.design = {width, height, ratio}

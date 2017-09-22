@@ -37,7 +37,7 @@ export default {
     addBtn() {
         this.btns = {}
 
-        let text = new PIXI.Text('重玩', {
+        let text = new PIXI.Text('Replay', {
             fontFamily: '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif',
             fontSize: 36,
             fill: 0x4caf50,
@@ -55,7 +55,7 @@ export default {
         text.position.set((this.btns.replay.width - text.width) * .5,
             (this.btns.replay.height - text.height) * .5)
 
-        text = new PIXI.Text('退出', {
+        text = new PIXI.Text('Quit', {
             fontFamily: '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif',
             fontSize: 36,
             fill: 0xff5722,
