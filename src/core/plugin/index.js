@@ -99,3 +99,32 @@ planck.Body.prototype.syncPosition = function() {
         (window.design.height * .5 - node.y) / PTM))
     return this
 }
+
+/*
+* 画布旋转处理
+*/
+
+PIXI.interaction.InteractionManager.prototype.mapPositionToPoint = function(point, x, y) {
+    let rect;
+
+    // IE 11 fix
+    if (!this.interactionDOMElement.parentElement) {
+        rect = {x: 0, y: 0, width: 0, height: 0}
+    } else {
+        rect = this.interactionDOMElement.getBoundingClientRect()
+    }
+
+    const resolutionMultiplier = navigator.isCocoonJS ? this.resolution : (1.0 / this.resolution);
+
+    point.x = ((x - rect.left) * (this.interactionDOMElement.width / rect.width)) * resolutionMultiplier
+    point.y = ((y - rect.top) * (this.interactionDOMElement.height / rect.height)) * resolutionMultiplier
+
+    /*
+    * 特殊处理
+    * 视情况而定
+    */
+    if (window.angle === 90) {
+        point.y = (1 - (x - rect.left) / rect.width) * this.interactionDOMElement.height * resolutionMultiplier;
+        point.x = (y - rect.top) * (this.interactionDOMElement.width / rect.height) * resolutionMultiplier;
+    }
+}

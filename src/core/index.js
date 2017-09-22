@@ -1,4 +1,4 @@
-import '../plugin'
+import './plugin'
 
 const
     ratio = 2,
@@ -21,10 +21,12 @@ function resize() {
 
     if (screen.w / screen.h >= 1) {
         // 宽屏
+        window.angle = 0
         ratio.w = screen.w / width
         ratio.h = screen.h / height
     } else {
         // 窄屏 (canvas 旋转 90° w <=> h)
+        window.angle = 90
         ratio.w = screen.w / height,
         ratio.h = screen.h / width
     }
