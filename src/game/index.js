@@ -258,16 +258,13 @@ export default {
     load() {
         return new Promise(resolve => {
             core.loader
-                .add([
-                    'res/audio/jump.mp3',
-                    'res/audio/ready.mp3',
-                    'res/audio/gameover.mp3',
-                    'res/audio/eat.mp3',
-                    'res/audio/go.mp3',
-                    'res/audio/1.mp3',
-                    'res/audio/2.mp3',
-                    'res/audio/3.mp3'
-                ])
+                .add({url: 'res/audio/jump.mp3', loadType: 1})
+                .add({url: 'res/audio/ready.mp3', loadType: 1})
+                .add({url: 'res/audio/go.mp3', loadType: 1})
+                .add({url: 'res/audio/eat.mp3', loadType: 1})
+                .add({url: 'res/audio/1.mp3', loadType: 1})
+                .add({url: 'res/audio/2.mp3', loadType: 1})
+                .add({url: 'res/audio/3.mp3', loadType: 1})
                 .add('game', 'res/game.json')
                 .add('shape', 'res/shape.json')
                 .load((loader, res) => {
