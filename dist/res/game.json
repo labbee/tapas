@@ -1,0 +1,270 @@
+{
+"frames": {
+	"background.png": {
+		"frame": {"x":0, "y":360, "w":800, "h":480},
+		"spriteSourceSize": {"x":0,"y":0,"w":800,"h":480},
+		"sourceSize": {"w":800,"h":480}
+	},
+	"green_button11.png": {
+		"frame": {"x":999, "y":720, "w":49, "h":49},
+		"spriteSourceSize": {"x":0,"y":0,"w":49,"h":49},
+		"sourceSize": {"w":49,"h":49}
+	},
+	"grey_button13.png": {
+		"frame": {"x":1018, "y":1021, "w":49, "h":45},
+		"spriteSourceSize": {"x":0,"y":0,"w":49,"h":45},
+		"sourceSize": {"w":49,"h":45}
+	},
+	"groundDirt.png": {
+		"frame": {"x":0, "y":144, "w":808, "h":71},
+		"spriteSourceSize": {"x":0,"y":0,"w":808,"h":71},
+		"sourceSize": {"w":808,"h":71}
+	},
+	"groundGrass.png": {
+		"frame": {"x":0, "y":216, "w":808, "h":71},
+		"spriteSourceSize": {"x":0,"y":0,"w":808,"h":71},
+		"sourceSize": {"w":808,"h":71}
+	},
+	"groundIce.png": {
+		"frame": {"x":0, "y":0, "w":808, "h":71},
+		"spriteSourceSize": {"x":0,"y":0,"w":808,"h":71},
+		"sourceSize": {"w":808,"h":71}
+	},
+	"groundRock.png": {
+		"frame": {"x":0, "y":72, "w":808, "h":71},
+		"spriteSourceSize": {"x":0,"y":0,"w":808,"h":71},
+		"sourceSize": {"w":808,"h":71}
+	},
+	"groundSnow.png": {
+		"frame": {"x":0, "y":288, "w":808, "h":71},
+		"spriteSourceSize": {"x":0,"y":0,"w":808,"h":71},
+		"sourceSize": {"w":808,"h":71}
+	},
+	"medalBronze.png": {
+		"frame": {"x":516, "y":841, "w":114, "h":119},
+		"spriteSourceSize": {"x":0,"y":0,"w":114,"h":119},
+		"sourceSize": {"w":114,"h":119}
+	},
+	"medalGold.png": {
+		"frame": {"x":516, "y":961, "w":114, "h":119},
+		"spriteSourceSize": {"x":0,"y":0,"w":114,"h":119},
+		"sourceSize": {"w":114,"h":119}
+	},
+	"medalSilver.png": {
+		"frame": {"x":401, "y":920, "w":114, "h":119},
+		"spriteSourceSize": {"x":0,"y":0,"w":114,"h":119},
+		"sourceSize": {"w":114,"h":119}
+	},
+	"number0.png": {
+		"frame": {"x":1018, "y":942, "w":53, "h":78},
+		"spriteSourceSize": {"x":0,"y":0,"w":53,"h":78},
+		"sourceSize": {"w":53,"h":78}
+	},
+	"number1.png": {
+		"frame": {"x":1047, "y":770, "w":37, "h":76},
+		"spriteSourceSize": {"x":0,"y":0,"w":37,"h":76},
+		"sourceSize": {"w":37,"h":76}
+	},
+	"number2.png": {
+		"frame": {"x":1019, "y":468, "w":51, "h":77},
+		"spriteSourceSize": {"x":0,"y":0,"w":51,"h":77},
+		"sourceSize": {"w":51,"h":77}
+	},
+	"number3.png": {
+		"frame": {"x":1019, "y":312, "w":51, "h":78},
+		"spriteSourceSize": {"x":0,"y":0,"w":51,"h":78},
+		"sourceSize": {"w":51,"h":78}
+	},
+	"number4.png": {
+		"frame": {"x":1007, "y":0, "w":55, "h":76},
+		"spriteSourceSize": {"x":0,"y":0,"w":55,"h":76},
+		"sourceSize": {"w":55,"h":76}
+	},
+	"number5.png": {
+		"frame": {"x":1019, "y":546, "w":50, "h":76},
+		"spriteSourceSize": {"x":0,"y":0,"w":50,"h":76},
+		"sourceSize": {"w":50,"h":76}
+	},
+	"number6.png": {
+		"frame": {"x":1007, "y":155, "w":53, "h":77},
+		"spriteSourceSize": {"x":0,"y":0,"w":53,"h":77},
+		"sourceSize": {"w":53,"h":77}
+	},
+	"number7.png": {
+		"frame": {"x":1019, "y":391, "w":51, "h":76},
+		"spriteSourceSize": {"x":0,"y":0,"w":51,"h":76},
+		"sourceSize": {"w":51,"h":76}
+	},
+	"number8.png": {
+		"frame": {"x":1019, "y":233, "w":51, "h":78},
+		"spriteSourceSize": {"x":0,"y":0,"w":51,"h":78},
+		"sourceSize": {"w":51,"h":78}
+	},
+	"number9.png": {
+		"frame": {"x":1007, "y":77, "w":53, "h":77},
+		"spriteSourceSize": {"x":0,"y":0,"w":53,"h":77},
+		"sourceSize": {"w":53,"h":77}
+	},
+	"planeBlue1.png": {
+		"frame": {"x":958, "y":868, "w":88, "h":73},
+		"spriteSourceSize": {"x":0,"y":0,"w":88,"h":73},
+		"sourceSize": {"w":88,"h":73}
+	},
+	"planeBlue2.png": {
+		"frame": {"x":958, "y":794, "w":88, "h":73},
+		"spriteSourceSize": {"x":0,"y":0,"w":88,"h":73},
+		"sourceSize": {"w":88,"h":73}
+	},
+	"planeBlue3.png": {
+		"frame": {"x":918, "y":148, "w":88, "h":73},
+		"spriteSourceSize": {"x":0,"y":0,"w":88,"h":73},
+		"sourceSize": {"w":88,"h":73}
+	},
+	"planeGreen1.png": {
+		"frame": {"x":918, "y":74, "w":88, "h":73},
+		"spriteSourceSize": {"x":0,"y":0,"w":88,"h":73},
+		"sourceSize": {"w":88,"h":73}
+	},
+	"planeGreen2.png": {
+		"frame": {"x":918, "y":0, "w":88, "h":73},
+		"spriteSourceSize": {"x":0,"y":0,"w":88,"h":73},
+		"sourceSize": {"w":88,"h":73}
+	},
+	"planeGreen3.png": {
+		"frame": {"x":910, "y":720, "w":88, "h":73},
+		"spriteSourceSize": {"x":0,"y":0,"w":88,"h":73},
+		"sourceSize": {"w":88,"h":73}
+	},
+	"planeRed1.png": {
+		"frame": {"x":809, "y":240, "w":88, "h":73},
+		"spriteSourceSize": {"x":0,"y":0,"w":88,"h":73},
+		"sourceSize": {"w":88,"h":73}
+	},
+	"planeRed2.png": {
+		"frame": {"x":413, "y":841, "w":88, "h":73},
+		"spriteSourceSize": {"x":0,"y":0,"w":88,"h":73},
+		"sourceSize": {"w":88,"h":73}
+	},
+	"planeRed3.png": {
+		"frame": {"x":267, "y":994, "w":88, "h":73},
+		"spriteSourceSize": {"x":0,"y":0,"w":88,"h":73},
+		"sourceSize": {"w":88,"h":73}
+	},
+	"planeYellow1.png": {
+		"frame": {"x":178, "y":994, "w":88, "h":73},
+		"spriteSourceSize": {"x":0,"y":0,"w":88,"h":73},
+		"sourceSize": {"w":88,"h":73}
+	},
+	"planeYellow2.png": {
+		"frame": {"x":89, "y":994, "w":88, "h":73},
+		"spriteSourceSize": {"x":0,"y":0,"w":88,"h":73},
+		"sourceSize": {"w":88,"h":73}
+	},
+	"planeYellow3.png": {
+		"frame": {"x":0, "y":994, "w":88, "h":73},
+		"spriteSourceSize": {"x":0,"y":0,"w":88,"h":73},
+		"sourceSize": {"w":88,"h":73}
+	},
+	"puffLarge.png": {
+		"frame": {"x":356, "y":994, "w":42, "h":35},
+		"spriteSourceSize": {"x":0,"y":0,"w":42,"h":35},
+		"sourceSize": {"w":42,"h":35}
+	},
+	"puffSmall.png": {
+		"frame": {"x":482, "y":1040, "w":25, "h":21},
+		"spriteSourceSize": {"x":0,"y":0,"w":25,"h":21},
+		"sourceSize": {"w":25,"h":21}
+	},
+	"rock.png": {
+		"frame": {"x":849, "y":840, "w":108, "h":239},
+		"spriteSourceSize": {"x":0,"y":0,"w":108,"h":239},
+		"sourceSize": {"w":108,"h":239}
+	},
+	"rockDown.png": {
+		"frame": {"x":809, "y":0, "w":108, "h":239},
+		"spriteSourceSize": {"x":0,"y":0,"w":108,"h":239},
+		"sourceSize": {"w":108,"h":239}
+	},
+	"rockGrass.png": {
+		"frame": {"x":910, "y":240, "w":108, "h":239},
+		"spriteSourceSize": {"x":0,"y":0,"w":108,"h":239},
+		"sourceSize": {"w":108,"h":239}
+	},
+	"rockGrassDown.png": {
+		"frame": {"x":801, "y":360, "w":108, "h":239},
+		"spriteSourceSize": {"x":0,"y":0,"w":108,"h":239},
+		"sourceSize": {"w":108,"h":239}
+	},
+	"rockIce.png": {
+		"frame": {"x":740, "y":841, "w":108, "h":239},
+		"spriteSourceSize": {"x":0,"y":0,"w":108,"h":239},
+		"sourceSize": {"w":108,"h":239}
+	},
+	"rockIceDown.png": {
+		"frame": {"x":631, "y":841, "w":108, "h":239},
+		"spriteSourceSize": {"x":0,"y":0,"w":108,"h":239},
+		"sourceSize": {"w":108,"h":239}
+	},
+	"rockSnow.png": {
+		"frame": {"x":801, "y":600, "w":108, "h":239},
+		"spriteSourceSize": {"x":0,"y":0,"w":108,"h":239},
+		"sourceSize": {"w":108,"h":239}
+	},
+	"rockSnowDown.png": {
+		"frame": {"x":910, "y":480, "w":108, "h":239},
+		"spriteSourceSize": {"x":0,"y":0,"w":108,"h":239},
+		"sourceSize": {"w":108,"h":239}
+	},
+	"starBronze.png": {
+		"frame": {"x":442, "y":1040, "w":39, "h":38},
+		"spriteSourceSize": {"x":0,"y":0,"w":39,"h":38},
+		"sourceSize": {"w":39,"h":38}
+	},
+	"starGold.png": {
+		"frame": {"x":1019, "y":623, "w":39, "h":38},
+		"spriteSourceSize": {"x":0,"y":0,"w":39,"h":38},
+		"sourceSize": {"w":39,"h":38}
+	},
+	"starSilver.png": {
+		"frame": {"x":910, "y":794, "w":39, "h":38},
+		"spriteSourceSize": {"x":0,"y":0,"w":39,"h":38},
+		"sourceSize": {"w":39,"h":38}
+	},
+	"tap.png": {
+		"frame": {"x":958, "y":942, "w":59, "h":59},
+		"spriteSourceSize": {"x":0,"y":0,"w":59,"h":59},
+		"sourceSize": {"w":59,"h":59}
+	},
+	"tapLeft.png": {
+		"frame": {"x":356, "y":1040, "w":85, "h":42},
+		"spriteSourceSize": {"x":0,"y":0,"w":85,"h":42},
+		"sourceSize": {"w":85,"h":42}
+	},
+	"tapRight.png": {
+		"frame": {"x":809, "y":314, "w":85, "h":42},
+		"spriteSourceSize": {"x":0,"y":0,"w":85,"h":42},
+		"sourceSize": {"w":85,"h":42}
+	},
+	"tapTick.png": {
+		"frame": {"x":958, "y":1002, "w":59, "h":59},
+		"spriteSourceSize": {"x":0,"y":0,"w":59,"h":59},
+		"sourceSize": {"w":59,"h":59}
+	},
+	"textGameOver.png": {
+		"frame": {"x":0, "y":841, "w":412, "h":78},
+		"spriteSourceSize": {"x":0,"y":0,"w":412,"h":78},
+		"sourceSize": {"w":412,"h":78}
+	},
+	"textGetReady.png": {
+		"frame": {"x":0, "y":920, "w":400, "h":73},
+		"spriteSourceSize": {"x":0,"y":0,"w":400,"h":73},
+		"sourceSize": {"w":400,"h":73}
+	}
+
+},
+"meta": {
+	"image": "game.png",
+	"size": {"w": 1085, "h": 1083},
+	"scale": "1"
+}
+}
