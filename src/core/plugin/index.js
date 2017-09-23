@@ -116,15 +116,14 @@ PIXI.interaction.InteractionManager.prototype.mapPositionToPoint = function(poin
 
     const resolutionMultiplier = navigator.isCocoonJS ? this.resolution : (1.0 / this.resolution);
 
-    point.x = ((x - rect.left) * (this.interactionDOMElement.width / rect.width)) * resolutionMultiplier
-    point.y = ((y - rect.top) * (this.interactionDOMElement.height / rect.height)) * resolutionMultiplier
-
     /*
     * 特殊处理
-    * 视情况而定
     */
     if (window.design && window.design.angle === 90) {
         point.y = (1 - (x - rect.left) / rect.width) * this.interactionDOMElement.height * resolutionMultiplier;
         point.x = (y - rect.top) * (this.interactionDOMElement.width / rect.height) * resolutionMultiplier;
+    } else {
+        point.x = ((x - rect.left) * (this.interactionDOMElement.width / rect.width)) * resolutionMultiplier
+        point.y = ((y - rect.top) * (this.interactionDOMElement.height / rect.height)) * resolutionMultiplier
     }
 }

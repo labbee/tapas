@@ -11,22 +11,20 @@ export default {
     state: 'ready',
 
     init() {
-
-        this.audios = {
-            jump: new Howl({src: 'res/audio/jump.mp3'}),
-            eat: new Howl({src: 'res/audio/eat.mp3'}),
-            one: new Howl({src: 'res/audio/1.mp3'}),
-            two: new Howl({src: 'res/audio/2.mp3'}),
-            three: new Howl({src: 'res/audio/3.mp3'}),
-            ready: new Howl({src: 'res/audio/ready.mp3'}),
-            over: new Howl({src: 'res/audio/gameover.mp3'}),
-            go: new Howl({src: 'res/audio/go.mp3'})
-        }
-
-
         this.load().then(res => {
             this.textures = res.game.textures
             this.shapes = res.shape.data.bodies
+
+            this.audios = {
+                jump: new Howl({src: 'res/audio/jump.mp3'}),
+                eat: new Howl({src: 'res/audio/eat.mp3'}),
+                one: new Howl({src: 'res/audio/1.mp3'}),
+                two: new Howl({src: 'res/audio/2.mp3'}),
+                three: new Howl({src: 'res/audio/3.mp3'}),
+                ready: new Howl({src: 'res/audio/ready.mp3'}),
+                over: new Howl({src: 'res/audio/gameover.mp3'}),
+                go: new Howl({src: 'res/audio/go.mp3'})
+            }
 
             // 添加游戏内容
 
@@ -260,6 +258,16 @@ export default {
     load() {
         return new Promise(resolve => {
             core.loader
+                .add([
+                    'res/audio/jump.mp3',
+                    'res/audio/ready.mp3',
+                    'res/audio/gameover.mp3',
+                    'res/audio/eat.mp3',
+                    'res/audio/go.mp3',
+                    'res/audio/1.mp3',
+                    'res/audio/2.mp3',
+                    'res/audio/3.mp3'
+                ])
                 .add('game', 'res/game.json')
                 .add('shape', 'res/shape.json')
                 .load((loader, res) => {
