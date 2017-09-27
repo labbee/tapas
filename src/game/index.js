@@ -348,7 +348,7 @@ export default {
 
     listen() {
         const pointerDown = window.hasOwnProperty('onpointerdown') ?
-            'pointerdown' : 'touchstart'
+            'pointerdown' : window.hasOwnProperty('ontouchstart') ? 'touchstart' : 'mousedown'
 
         core.view.addEventListener(pointerDown, this.tap.bind(this))
 

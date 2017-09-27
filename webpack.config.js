@@ -3,6 +3,7 @@ const
     path = require('path'),
     htmlWebpackPlugin = require('html-webpack-plugin'),
     extractTextPlugin = require('extract-text-webpack-plugin'),
+    copyWebpackPlugin = require('copy-webpack-plugin'),
     fs = require('fs')
 
 module.exports = {
@@ -14,8 +15,17 @@ module.exports = {
     },
     devtool: false,
     output: {
-        path: __dirname,
+        path: path.join(__dirname, '/dist'),
         filename: '[name].js'
+    },
+    devServer: {
+        inline: true,
+        contentBase: path.join(__dirname, '/dist'),
+        noInfo: true,
+        watchOptions: {
+            aggregateTimeout: 1000,
+            poll: 1000
+        }
     },
     module: {
         rules: [
@@ -51,6 +61,11 @@ module.exports = {
     },
 
     plugins: [
+        new copyWebpackPlugin([
+            {from: 'res', to: 'res'},
+            {from: 'lib', to: 'lib'},
+        ]),
+
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
