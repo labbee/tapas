@@ -188,7 +188,7 @@ export default {
 
     listen() {
         const pointerDown = window.hasOwnProperty('onpointerdown') ?
-            'pointerdown' : 'touchstart'
+            'pointerdown' :  window.hasOwnProperty('ontouchstart') ? 'touchstart' : 'mousedown'
 
         this.btns.replay.on(pointerDown, () => {
             this.game.replay()
