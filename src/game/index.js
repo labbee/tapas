@@ -3,7 +3,6 @@ import tip from './tip'
 import star from './star'
 
 export default {
-    core,
     speed: 4,
     score: 0,
 
@@ -16,14 +15,14 @@ export default {
             this.shapes = res.shape.data.bodies
 
             this.audios = {
-                jump: new Howl({src: 'res/audio/jump.mp3'}),
-                eat: new Howl({src: 'res/audio/eat.mp3'}),
-                one: new Howl({src: 'res/audio/1.mp3'}),
-                two: new Howl({src: 'res/audio/2.mp3'}),
-                three: new Howl({src: 'res/audio/3.mp3'}),
-                ready: new Howl({src: 'res/audio/ready.mp3'}),
-                over: new Howl({src: 'res/audio/gameover.mp3'}),
-                go: new Howl({src: 'res/audio/go.mp3'})
+                jump: new Howl({src: 'static/audios/jump.mp3'}),
+                eat: new Howl({src: 'static/audios/eat.mp3'}),
+                one: new Howl({src: 'static/audios/1.mp3'}),
+                two: new Howl({src: 'static/audios/2.mp3'}),
+                three: new Howl({src: 'static/audios/3.mp3'}),
+                ready: new Howl({src: 'static/audios/ready.mp3'}),
+                over: new Howl({src: 'static/audios/gameover.mp3'}),
+                go: new Howl({src: 'static/audios/go.mp3'})
             }
 
             // 添加游戏内容
@@ -41,6 +40,7 @@ export default {
             this.star = star.init(this)
 
             core.ticker.add(this.loop.bind(this))
+
         })
     },
 
@@ -52,8 +52,8 @@ export default {
                 bkg = new PIXI.Sprite(this.textures['background.png']),
                 ratio = bkg.width / bkg.height
 
-            if (ratio > window.design.ratio) bkg.scale.set(window.design.width / bkg.width)
-            else bkg.scale.set(window.design.height / bkg.height)
+            if (ratio > design.ratio) bkg.scale.set(design.width / bkg.width)
+            else bkg.scale.set(design.height / bkg.height)
 
             if (this.lastBkg) bkg.x = this.lastBkg.x + this.lastBkg.width - 1
             else bkg.x = 0
@@ -74,7 +74,7 @@ export default {
         })
 
         this.scoreboard.position.set(
-            window.design.width - this.scoreboard.width - 6,
+            design.width - this.scoreboard.width - 6,
             6)
 
         core.stage.addChild(this.scoreboard)
@@ -88,7 +88,7 @@ export default {
             const ground = new PIXI.Sprite(this.textures['groundSnow.png'])
             ground.anchor.set(.5)
             ground.position.set(ground.width * (i + .5),
-                window.design.height - ground.height * .5)
+                design.height - ground.height * .5)
 
             PIXI.extras.physics.enable(ground)
                 .clearShapes()
@@ -114,7 +114,7 @@ export default {
         this.plane.animationSpeed = .5
         this.plane.play()
         this.plane.anchor.set(.5)
-        this.plane.position.set(250, window.design.height >> 1)
+        this.plane.position.set(250, design.height >> 1)
 
         const puff = new PIXI.extras.AnimatedSprite([
             this.textures['puffLarge.png'],
@@ -172,7 +172,7 @@ export default {
                 core.stage.addChildAt(rock, core.stage.getChildIndex(_this.scoreboard))
             }
 
-            rock.position.set(window.design.width + rock.width * .5,
+            rock.position.set(design.width + rock.width * .5,
                 rock.height * .5)
             rock.body.syncPosition()
 
@@ -208,8 +208,8 @@ export default {
                 core.stage.addChildAt(rock, core.stage.getChildIndex(_this.grounds[0]))
             }
 
-            rock.position.set(window.design.width + rock.width * .5,
-                window.design.height - rock.height * .5)
+            rock.position.set(design.width + rock.width * .5,
+                design.height - rock.height * .5)
             rock.body.syncPosition()
 
             _this.rocks.bottom.front.push(rock)
@@ -218,7 +218,7 @@ export default {
                 stamp.lastBottomStar = Date.now()
                 _this.star.add({
                     x: rock.position.x + 12,
-                    y: window.design.height - rock.height + 50
+                    y: design.height - rock.height + 50
                 }, Math.random() > .5 ? 1 : 2)
             }
         }
@@ -255,43 +255,6 @@ export default {
         this.state = 'over'
     },
 
-    load() {
-        return new Promise(resolve => {
-            core.loader
-                .add({url: 'res/audio/jump.mp3', loadType: 1})
-                .add({url: 'res/audio/ready.mp3', loadType: 1})
-                .add({url: 'res/audio/go.mp3', loadType: 1})
-                .add({url: 'res/audio/eat.mp3', loadType: 1})
-                .add({url: 'res/audio/1.mp3', loadType: 1})
-                .add({url: 'res/audio/2.mp3', loadType: 1})
-                .add({url: 'res/audio/3.mp3', loadType: 1})
-                .add('game', 'res/game.json')
-                .add('shape', 'res/shape.json')
-                .load((loader, res) => {
-                    progress.destroy()
-                    resolve(res)
-                })
-
-            const progress = new PIXI.Text('0%', {
-                fontFamily: '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif',
-                fontSize: 36,
-                fill: 0xffffff,
-                align: 'center'
-            })
-
-            progress.position.set(
-                (window.design.width - progress.width) * .5,
-                (window.design.height - progress.height) * .5)
-
-            core.stage.addChild(progress)
-
-            core.loader.onProgress.add(loader => {
-                progress.text = `${~~loader.progress}%`
-                progress.x = (window.design.width - progress.width) * .5
-            })
-        })
-    },
-
     tap() {
         if (this.state === 'over') return
 
@@ -307,7 +270,7 @@ export default {
 
         // 更新分数
         this.scoreboard.text = `SCORE: ${++this.score}`
-        this.scoreboard.x = window.design.width - this.scoreboard.width - 6
+        this.scoreboard.x = design.width - this.scoreboard.width - 6
     },
 
     /* 重置游戏 */
@@ -315,10 +278,10 @@ export default {
         // 分数清零
         this.score = 0
         this.scoreboard.text = `SCORE: ${this.score}`
-        this.scoreboard.x = window.design.width - this.scoreboard.width - 6
+        this.scoreboard.x = design.width - this.scoreboard.width - 6
 
         // 重置飞机
-        this.plane.position.set(250, window.design.height >> 1)
+        this.plane.position.set(250, design.height >> 1)
         this.plane.filters = []
         this.plane.scale.set(1)
         this.plane.body.syncPosition()
@@ -363,6 +326,44 @@ export default {
         })
     },
 
+    load() {
+        return new Promise(resolve => {
+            core.loader
+                .add({url: 'static/audios/jump.mp3', loadType: 1})
+                .add({url: 'static/audios/ready.mp3', loadType: 1})
+                .add({url: 'static/audios/go.mp3', loadType: 1})
+                .add({url: 'static/audios/eat.mp3', loadType: 1})
+                .add({url: 'static/audios/1.mp3', loadType: 1})
+                .add({url: 'static/audios/2.mp3', loadType: 1})
+                .add({url: 'static/audios/3.mp3', loadType: 1})
+                .add('game', 'static/game.json')
+                .add('shape', 'static/shape.json')
+                .load((loader, res) => {
+                    progress.destroy()
+                    resolve(res)
+                })
+
+            const progress = new PIXI.Text('0%', {
+                fontFamily: '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif',
+                fontSize: 36,
+                fill: 0xffffff,
+                align: 'center'
+            })
+
+            progress.position.set(
+                (design.width - progress.width) * .5,
+                (design.height - progress.height) * .5)
+
+            core.stage.addChild(progress)
+
+            core.loader.onProgress.add(loader => {
+                progress.text = `${~~loader.progress}%`
+                progress.x = (design.width - progress.width) * .5
+            })
+        })
+    },
+
+
     loop() {
 
         if (this.state === 'over') return
@@ -389,7 +390,7 @@ export default {
 
         // 飞机高度限制
         {
-            if (this.plane.x < window.design.width / 3) {
+            if (this.plane.x < design.width / 3) {
                 const velocity = this.plane.body.getLinearVelocity()
                 velocity.x = 1.5
                 this.plane.body.setLinearVelocity(velocity)
@@ -436,6 +437,7 @@ export default {
         }
     }
 }
+
 
 core.resize()
 document.body.appendChild(core.view)

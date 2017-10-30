@@ -1,19 +1,11 @@
-import './plugin'
-
-const
-    ratio = 2,
-    width = 667 * ratio,
-    height = 375 * ratio
+import './plugins'
 
 const app = new PIXI.Application({
-    width,
-    height
+    width: design.width,
+    height: design.height
 })
 
-window.design = {width, height, ratio}
-
 function resize() {
-
     const screen = {
         w: window.innerWidth,
         h: window.innerHeight
@@ -23,23 +15,23 @@ function resize() {
 
     if (screen.w / screen.h >= 1) {
         // 宽屏
-        window.design.angle = 0
-        ratio.w = screen.w / width
-        ratio.h = screen.h / height
+        design.angle = 0
+        ratio.w = screen.w / design.width
+        ratio.h = screen.h / design.height
     } else {
         // 窄屏 (canvas 旋转 90° w <=> h)
-        window.design.angle = 90
-        ratio.w = screen.w / height,
-        ratio.h = screen.h / width
+        design.angle = 90
+        ratio.w = screen.w / design.height,
+        ratio.h = screen.h / design.width
     }
 
     let w, h
     if (ratio.w >= ratio.h) {
-        w = width * ratio.h
-        h = height * ratio.h
+        w = design.width * ratio.h
+        h = design.height * ratio.h
     } else {
-        w = width * ratio.w
-        h = height * ratio.w
+        w = design.width * ratio.w
+        h = design.height * ratio.w
     }
 
     app.view.style.width = `${w}px`
@@ -50,7 +42,6 @@ function resize() {
 
 }
 
-
 export default {
     resize,
     loader: app.loader,
@@ -59,4 +50,3 @@ export default {
     view: app.view,
     stage: app.stage
 }
-

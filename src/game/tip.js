@@ -1,5 +1,7 @@
-// 操作指南
+import core from '../core'
 
+
+// 操作指南
 export default {
     container: new PIXI.Container(),
 
@@ -8,7 +10,7 @@ export default {
         this.audios = game.audios
         this.game = game
 
-        game.core.stage.addChild(this.container)
+        core.stage.addChild(this.container)
 
         this.addNum()
         this.addTapTicker()
@@ -29,7 +31,7 @@ export default {
         ])
 
         this.num.anchor.set(.5)
-        this.num.position.set(window.design.width >> 1, window.design.height >> 1)
+        this.num.position.set(design.width >> 1, design.height >> 1)
 
         this.container.addChild(this.num)
     },
@@ -48,8 +50,8 @@ export default {
         this.btns.replay.width = 200
         this.btns.replay.height = 100
         this.btns.replay.pivot.set(100, 50)
-        this.btns.replay.position.set(window.design.width >> 1,
-            window.design.height * .5 + 60)
+        this.btns.replay.position.set(design.width >> 1,
+            design.height * .5 + 60)
 
         this.btns.replay.addChild(text)
         text.position.set((this.btns.replay.width - text.width) * .5,
@@ -66,8 +68,8 @@ export default {
         this.btns.quit.width = 200
         this.btns.quit.height = 100
         this.btns.quit.pivot.set(100, 50)
-        this.btns.quit.position.set(window.design.width >> 1,
-            window.design.height * .5 + 90)
+        this.btns.quit.position.set(design.width >> 1,
+            design.height * .5 + 90)
 
 
         this.btns.quit.addChild(text)
@@ -90,7 +92,7 @@ export default {
         this.tapTicker.animationSpeed = 1.8
         this.tapTicker.play()
         this.tapTicker.anchor.set(.5)
-        this.tapTicker.position.set(window.design.width * .6, window.design.height >> 1)
+        this.tapTicker.position.set(design.width * .6, design.height >> 1)
 
         this.container.addChild(this.tapTicker)
     },
@@ -156,8 +158,8 @@ export default {
         this.audios.over.play()
 
         // 前置显示
-        this.game.core.stage.setChildIndex(this.container,
-            this.game.core.stage.children.length - 1)
+        core.stage.setChildIndex(this.container,
+            core.stage.children.length - 1)
 
         new Promise(resolve => {
             createjs.Tween.get(this.num.scale)
@@ -179,7 +181,7 @@ export default {
         this.btns.replay.alpha =
         this.btns.quit.alpha = 0
 
-        this.num.position.set(window.design.width >> 1, window.design.height >> 1)
+        this.num.position.set(design.width >> 1, design.height >> 1)
 
         this.tapTicker.visible = true
 

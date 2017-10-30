@@ -1,9 +1,11 @@
+import core from '../core'
+
 export default {
     pools: {front: [], back: []},
 
     init(game) {
         this.game = game
-        game.core.ticker.add(this.loop.bind(this))
+        core.ticker.add(this.loop.bind(this))
         return this
     },
 
@@ -32,7 +34,7 @@ export default {
                     .setKinematic()
                     .setLinearVelocity(planck.Vec2(-this.game.speed, 0))
 
-                this.game.core.stage.addChild(star)
+                core.stage.addChild(star)
 
             } else {
                 // old
@@ -102,7 +104,7 @@ export default {
                         .setKinematic()
                         .setLinearVelocity(planck.Vec2(-this.game.speed, 0))
 
-                    this.game.core.stage.addChild(star)
+                    core.stage.addChild(star)
 
                 } else {
                     // 重置属性

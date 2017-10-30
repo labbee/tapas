@@ -17,8 +17,8 @@ function loop() {
         node = body.node
         pos = body.getPosition()
         node.position.set(
-            window.design.width * .5 + pos.x * PTM,
-            window.design.height * .5 - pos.y * PTM)
+            design.width * .5 + pos.x * PTM,
+            design.height * .5 - pos.y * PTM)
         node.rotation = -body.getAngle()
     }
 
@@ -29,7 +29,7 @@ PIXI.extras.physics = {
     PTM,
     world,
 
-    enable(node, fixtureDef={}) {
+    enable(node, fixtureDef = {}) {
         node.body = world.createBody().setDynamic()
         node.body.createFixture(
             planck.Box(node.width * .5 / PTM, node.height * .5 / PTM),
@@ -73,14 +73,14 @@ world.on('begin-contact', contact => {
 })
 
 // 扩展方法
-planck.Body.prototype.clearShapes = function() {
+planck.Body.prototype.clearShapes = function () {
     for (let fixture = this.getFixtureList(); fixture; fixture = fixture.getNext()) {
         this.destroyFixture(fixture)
     }
     return this
 }
 
-planck.Body.prototype.loadPolygon = function(paths, fixtureDef={}) {
+planck.Body.prototype.loadPolygon = function (paths, fixtureDef = {}) {
     paths.forEach(vertexs => {
         this.createFixture(
             planck.Polygon(vertexs.map(vertex => planck.Vec2(vertex[0] / PTM, vertex[1] / PTM))),
@@ -92,11 +92,11 @@ planck.Body.prototype.loadPolygon = function(paths, fixtureDef={}) {
     return this
 }
 
-planck.Body.prototype.syncPosition = function() {
+planck.Body.prototype.syncPosition = function () {
     const node = this.node
     node && this.setPosition(planck.Vec2(
-        (node.x - window.design.width * .5) / PTM,
-        (window.design.height * .5 - node.y) / PTM))
+        (node.x - design.width * .5) / PTM,
+        (design.height * .5 - node.y) / PTM))
     return this
 }
 
@@ -104,12 +104,12 @@ planck.Body.prototype.syncPosition = function() {
 * 画布旋转处理
 */
 
-PIXI.interaction.InteractionManager.prototype.mapPositionToPoint = function(point, x, y) {
+PIXI.interaction.InteractionManager.prototype.mapPositionToPoint = function (point, x, y) {
     let rect;
 
     // IE 11 fix
     if (!this.interactionDOMElement.parentElement) {
-        rect = {x: 0, y: 0, width: 0, height: 0}
+        rect = { x: 0, y: 0, width: 0, height: 0 }
     } else {
         rect = this.interactionDOMElement.getBoundingClientRect()
     }
@@ -119,7 +119,7 @@ PIXI.interaction.InteractionManager.prototype.mapPositionToPoint = function(poin
     /*
     * 特殊处理
     */
-    if (window.design && window.design.angle === 90) {
+    if (design && design.angle === 90) {
         point.y = (1 - (x - rect.left) / rect.width) * this.interactionDOMElement.height * resolutionMultiplier;
         point.x = (y - rect.top) * (this.interactionDOMElement.width / rect.height) * resolutionMultiplier;
     } else {

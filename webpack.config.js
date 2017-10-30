@@ -4,11 +4,13 @@ const
     htmlWebpackPlugin = require('html-webpack-plugin'),
     extractTextPlugin = require('extract-text-webpack-plugin'),
     copyWebpackPlugin = require('copy-webpack-plugin'),
+    uglifyJsPlugin = require('uglifyjs-webpack-plugin'),
     fs = require('fs')
 
 module.exports = {
     entry: {
-        index: './src/ui/index.js'
+        index: './src/index.js',
+        vendor: ['pixi.js', 'pixi-filters', 'howler', 'planck-js']
     },
     stats: {
         children: false
@@ -16,15 +18,15 @@ module.exports = {
     devtool: false,
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: '[name].js'
+        filename: '[name].[chunkhash:4].js'
     },
     devServer: {
         inline: true,
         contentBase: path.join(__dirname, '/dist'),
         noInfo: true,
         watchOptions: {
-            aggregateTimeout: 1000,
-            poll: 1000
+            poll: 1000,
+            ignored: /node_modules/
         }
     },
     module: {
@@ -47,34 +49,36 @@ module.exports = {
                     fallback: 'style-loader',
                     use: ['css-loader', 'postcss-loader']
                 })
-            },
-            {
-                test: /\.vue$/,
-                use: [{
-                    loader: 'vue-loader',
-                    options: {
-                        extractCSS: true
-                    }
-                }]
             }
         ]
     },
 
     plugins: [
+
         new copyWebpackPlugin([
-            {from: 'res', to: 'res'},
-            {from: 'lib', to: 'lib'},
+            {from: 'src/static', to: 'static'}
         ]),
 
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
+        new webpack.DefinePlugin({
+            design: {ratio: 2, width: 667 * 2, height: 375 * 2}
+        }),
+
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['vendor', 'runtime'],
+            minChunks: Infinity
+        }),
+
+        new uglifyJsPlugin(),
+
+        new webpack.ProvidePlugin({
+            PIXI: 'pixi.js',
+            planck: 'planck-js',
+            howler: 'howler'
         }),
 
         new htmlWebpackPlugin({
-            template: './src/ui/index.html',
-            hash: true,
+            template: './src/index.html',
+            hash: false,
             filename: 'index.html',
             inject: 'body',
             minify: {
@@ -83,7 +87,7 @@ module.exports = {
         }),
 
         new extractTextPlugin({
-            filename: 'index.css',
+            filename: 'index.[chunkhash:4].css',
             allChunks: true
         })
     ]
