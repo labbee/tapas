@@ -119,7 +119,7 @@ PIXI.interaction.InteractionManager.prototype.mapPositionToPoint = function (poi
     /*
     * 特殊处理
     */
-    if (design && design.angle === 90) {
+    if (PIXI._angle === 90) {
         point.y = (1 - (x - rect.left) / rect.width) * this.interactionDOMElement.height * resolutionMultiplier;
         point.x = (y - rect.top) * (this.interactionDOMElement.width / rect.height) * resolutionMultiplier;
     } else {

@@ -77,8 +77,8 @@ export default {
             (this.btns.replay.height - text.height) * .5)
 
         // 初始隐藏
-        this.btns.replay.alpha =
-        this.btns.quit.alpha = 0
+        this.btns.replay.visible =
+        this.btns.quit.visible = false
 
         this.container.addChild(this.btns.replay)
     },
@@ -99,14 +99,12 @@ export default {
 
     showBtn() {
 
-
-        this.btns.replay.interactive =
-        this.btns.quit.interactive = true
-
         createjs.Tween.get(this.btns.replay)
+            .set({alpha: 0, visible: true})
             .to({alpha: 1}, 300)
 
         createjs.Tween.get(this.btns.quit)
+            .set({alpha: 0, visible: true})
             .to({alpha: 1}, 300)
     },
 
@@ -175,11 +173,10 @@ export default {
     },
 
     replay() {
-        this.btns.replay.interactive =
-        this.btns.quit.interactive = false
 
-        this.btns.replay.alpha =
-        this.btns.quit.alpha = 0
+
+        this.btns.replay.visible =
+        this.btns.quit.visible = false
 
         this.num.position.set(design.width >> 1, design.height >> 1)
 
@@ -191,6 +188,9 @@ export default {
     listen() {
         const pointerDown = window.hasOwnProperty('onpointerdown') ?
             'pointerdown' :  window.hasOwnProperty('ontouchstart') ? 'touchstart' : 'mousedown'
+
+        this.btns.replay.interactive =
+        this.btns.quit.interactive = true
 
         this.btns.replay.on(pointerDown, () => {
             this.game.replay()

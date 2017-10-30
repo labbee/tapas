@@ -1,4 +1,5 @@
 set -e
+rm -fr dist
 npm run build
 cd dist
 git init

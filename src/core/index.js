@@ -15,12 +15,12 @@ function resize() {
 
     if (screen.w / screen.h >= 1) {
         // 宽屏
-        design.angle = 0
+        PIXI._angle = 0
         ratio.w = screen.w / design.width
         ratio.h = screen.h / design.height
     } else {
         // 窄屏 (canvas 旋转 90° w <=> h)
-        design.angle = 90
+        PIXI._angle = 90
         ratio.w = screen.w / design.height,
         ratio.h = screen.h / design.width
     }
