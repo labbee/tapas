@@ -9,20 +9,19 @@ const
 
 module.exports = {
     entry: {
-        index: './src/index.js',
-        vendor: ['pixi.js', 'pixi-filters', 'howler', 'planck-js']
+        index: './src/index.js'
     },
     stats: {
         children: false
     },
     devtool: false,
     output: {
-        path: path.join(__dirname, '/dist'),
+        path: path.join(__dirname, 'dist'),
         filename: '[name].[chunkhash:4].js'
     },
     devServer: {
         inline: true,
-        contentBase: path.join(__dirname, '/dist'),
+        contentBase: path.join(__dirname, 'dist'),
         noInfo: true,
         watchOptions: {
             poll: 1000,
@@ -63,18 +62,18 @@ module.exports = {
             design: {ratio: 2, width: 667 * 2, height: 375 * 2}
         }),
 
-        new webpack.optimize.CommonsChunkPlugin({
-            name: ['vendor', 'runtime'],
-            minChunks: Infinity
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./manifest.json')
         }),
-
-        new uglifyJsPlugin(),
 
         new webpack.ProvidePlugin({
             PIXI: 'pixi.js',
             planck: 'planck-js',
             howler: 'howler'
         }),
+
+        new uglifyJsPlugin(),
 
         new htmlWebpackPlugin({
             template: './src/index.html',

@@ -15,14 +15,14 @@ export default {
             this.shapes = res.shape.data.bodies
 
             this.audios = {
-                jump: new Howl({src: 'static/audios/jump.mp3'}),
-                eat: new Howl({src: 'static/audios/eat.mp3'}),
-                one: new Howl({src: 'static/audios/1.mp3'}),
-                two: new Howl({src: 'static/audios/2.mp3'}),
-                three: new Howl({src: 'static/audios/3.mp3'}),
-                ready: new Howl({src: 'static/audios/ready.mp3'}),
-                over: new Howl({src: 'static/audios/gameover.mp3'}),
-                go: new Howl({src: 'static/audios/go.mp3'})
+                jump: new howler.Howl({src: 'static/audios/jump.mp3'}),
+                eat: new howler.Howl({src: 'static/audios/eat.mp3'}),
+                one: new howler.Howl({src: 'static/audios/1.mp3'}),
+                two: new howler.Howl({src: 'static/audios/2.mp3'}),
+                three: new howler.Howl({src: 'static/audios/3.mp3'}),
+                ready: new howler.Howl({src: 'static/audios/ready.mp3'}),
+                over: new howler.Howl({src: 'static/audios/gameover.mp3'}),
+                go: new howler.Howl({src: 'static/audios/go.mp3'})
             }
 
             // 添加游戏内容

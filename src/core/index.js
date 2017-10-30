@@ -1,4 +1,5 @@
 import './plugins'
+import 'pixi-filters'
 
 const app = new PIXI.Application({
     width: design.width,

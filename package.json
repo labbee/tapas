@@ -2,8 +2,10 @@
   "name": "tapas",
   "version": "1.0.0",
   "scripts": {
-    "dev": "webpack-dev-server --host 0.0.0.0",
-    "build": "webpack -p",
+    "clear": "rm -fr dist",
+    "dev": "npm run dll & webpack-dev-server --host 0.0.0.0",
+    "dll": "webpack --config webpack.dll.js",
+    "build": "npm run clear & npm run dll & webpack -p",
     "deploy": "sh scripts/deploy.sh"
   },
   "devDependencies": {
